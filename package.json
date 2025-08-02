@@ -1,0 +1,44 @@
+{
+  "name": "engine-monitoring-dashboard",
+  "version": "1.0.0",
+  "description": "Real-time engine performance monitoring dashboard for aircraft engines",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --port=3000",
+    "build": "echo 'Static HTML project - no build required'",
+    "test": "echo 'Tests not implemented yet'",
+    "lint": "eslint script.js",
+    "format": "prettier --write *.html *.css *.js"
+  },
+  "keywords": [
+    "aerospace",
+    "engine-monitoring",
+    "dashboard",
+    "aircraft-engines",
+    "frontend",
+    "javascript",
+    "charts",
+    "real-time",
+    "industrial",
+    "performance-monitoring"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "eslint": "^8.0.0",
+    "prettier": "^2.8.0"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/engine-monitoring-dashboard.git"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "homepage": "https://yourusername.github.io/engine-monitoring-dashboard/",
+  "bugs": {
+    "url": "https://github.com/yourusername/engine-monitoring-dashboard/issues"
+  }
+}
