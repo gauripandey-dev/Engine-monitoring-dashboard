@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engine Monitoring Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b">
+        <div class="px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="w-10 h-10 bg-blue-900 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-cog text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-900">Engine Performance Monitor</h1>
+                        <p class="text-sm text-gray-500">Real-time Monitoring Dashboard</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="text-right">
+                        <p class="text-sm font-medium" id="current-date"></p>
+                        <p class="text-sm text-gray-500" id="current-time"></p>
+                    </div>
+                    <button id="alerts-btn" class="relative p-2 bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition-colors">
+                        <i class="fas fa-bell"></i>
+                        <span class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center" id="alert-count">3</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar -->
+        <div class="w-64 bg-white shadow-sm h-screen sticky top-0">
+            <div class="p-4 border-b">
+                <h2 class="font-semibold text-gray-900 mb-3">Engine Fleet</h2>
+                <div class="space-y-2" id="engine-list">
+                    <!-- Engine buttons will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Fleet Overview -->
+            <div class="p-4">
+                <h3 class="font-semibold text-gray-900 mb-3">Fleet Status</h3>
+                <div class="w-full h-48 flex items-center justify-center">
+                    <canvas id="fleet-chart" width="200" height="200"></canvas>
+                </div>
+                <div class="mt-4 space-y-2" id="fleet-legend">
+                    <!-- Legend will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 p-6">
+            <!-- Engine Status Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6" id="status-cards">
+                <!-- Status cards will be populated by JavaScript -->
+            </div>
+
+            <!-- Charts Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                <!-- Performance Trends -->
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-gray-900">Performance Trends</h3>
+                        <select id="trend-metric" class="px-3 py-2 border border-gray-300 rounded-lg text-sm">
+                            <option value="rpm">RPM</option>
+                            <option value="egt">EGT (°C)</option>
+                            <option value="fuelFlow">Fuel Flow</option>
+                            <option value="thrust">Thrust</option>
+                        </select>
+                    </div>
+                    <div class="h-64">
+                        <canvas id="performance-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Engine Status Distribution -->
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Engine Parameters</h3>
+                    <div class="h-64">
+                        <canvas id="parameters-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tables Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Maintenance Schedule -->
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-gray-900">Maintenance Schedule</h3>
+                        <i class="fas fa-calendar-alt text-gray-400"></i>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead>
+                                <tr class="border-b border-gray-200">
+                                    <th class="text-left py-2 text-sm font-medium text-gray-600">Engine</th>
+                                    <th class="text-left py-2 text-sm font-medium text-gray-600">Task</th>
+                                    <th class="text-left py-2 text-sm font-medium text-gray-600">Due Date</th>
+                                    <th class="text-left py-2 text-sm font-medium text-gray-600">Priority</th>
+                                </tr>
+                            </thead>
+                            <tbody id="maintenance-table">
+                                <!-- Maintenance data will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Active Alerts -->
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-gray-900">Active Alerts</h3>
+                        <i class="fas fa-exclamation-triangle text-red-500"></i>
+                    </div>
+                    <div class="space-y-3" id="alerts-list">
+                        <!-- Alerts will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert Modal -->
+    <div id="alert-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+        <div class="flex items-center justify-center min-h-screen">
+            <div class="bg-white rounded-xl p-6 m-4 max-w-lg w-full">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-semibold">System Alerts</h3>
+                    <button id="close-modal" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div id="modal-alerts-list">
+                    <!-- Modal alerts content -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
