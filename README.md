@@ -291,8 +291,8 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## 📞 Contact
 
-Your Name - your.email@example.com  
-Project Link: [https://github.com/yourusername/engine-monitoring-dashboard](https://github.com/yourusername/engine-monitoring-dashboard)
+Gauri Pandey - gauripandey9720@gmail.com  
+Project Link: [https://github.com/gauripandey-dev/Engine-monitoring-dashboard](https://github.com/yourusername/engine-monitoring-dashboard)
 
 ## 🙏 Acknowledgments
 
@@ -317,4 +317,5 @@ Project Link: [https://github.com/yourusername/engine-monitoring-dashboard](http
 ![Performance Monitoring](<IMAGES/performance monitoring.png.png>)
 
 ### Mobile View
+
 ![Mobile Interface](IMAGES/mobile-view.png.png)
