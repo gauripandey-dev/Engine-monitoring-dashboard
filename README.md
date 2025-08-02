@@ -292,7 +292,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## 📞 Contact
 
 Gauri Pandey - gauripandey9720@gmail.com  
-Project Link: [https://github.com/gauripandey-dev/Engine-monitoring-dashboard](https://github.com/yourusername/engine-monitoring-dashboard)
+Project Link: [https://github.com/gauripandey-dev/Engine-monitoring-dashboard] Live demo: (engine-monitoring-dashboard-git-main-gauripandey-devs-projects.vercel.app)
 
 ## 🙏 Acknowledgments
 
@@ -319,3 +319,4 @@ Project Link: [https://github.com/gauripandey-dev/Engine-monitoring-dashboard](h
 ### Mobile View
 
 ![Mobile Interface](IMAGES/mobile-view.png.png)
+
